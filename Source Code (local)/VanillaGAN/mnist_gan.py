@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 
 
 #                        === DEFAULT PARAMETERS ===
+MODEL_DATA_ROOT = "Model Data/"
 MODEL_DATA_FILENAME = "mnist_gan_weights.npz"
 
 DEFAULT_TRAINING_SLICE_SIZE = 1280
@@ -61,7 +62,7 @@ data = np.loadtxt(data_path, delimiter=",", skiprows=1)
 #np.random.shuffle(data)
 
 # Separate inputs and labels and set parameters
-dataset_size = len(data)+1
+dataset_size = len(data)
 train_size = min(args.train_size, dataset_size)
 
 labels = data[:, 0]                     # shape: (60000,) or (train_size,)
@@ -422,9 +423,11 @@ class Discriminator:
 
 
 #                       === SAVE | LOAD MODEL DATA ===
-def save_model(generator, discriminator, filename=MODEL_DATA_FILENAME):
+def save_model(generator, discriminator, filename=MODEL_DATA_FILENAME, root=MODEL_DATA_ROOT):
+    
+    save_path = root + filename
     np.savez(
-        filename,
+        save_path,
         G_W1=generator.W1, G_b1=generator.b1,
         G_W2=generator.W2, G_b2=generator.b2,
         D_W1=discriminator.W1, D_b1=discriminator.b1,
@@ -432,14 +435,15 @@ def save_model(generator, discriminator, filename=MODEL_DATA_FILENAME):
     )
     print("saved model data", end="\n\n")
 
-def load_model(generator, discriminator, filename=MODEL_DATA_FILENAME):
-
-    if not os.path.exists(filename):
-        print(f"Model file '{filename}' not found. Creating new save file...")
-        save_model(generator, discriminator, filename)
+def load_model(generator, discriminator, filename=MODEL_DATA_FILENAME, root=MODEL_DATA_ROOT):
+    
+    load_path = root + filename
+    if not os.path.exists(load_path):
+        print(f"Model file '{load_path}' not found. Creating new save file...")
+        save_model(generator, discriminator, load_path)
         return
 
-    data = np.load(filename)
+    data = np.load(load_path)
     if generator:
         generator.W1 = data["G_W1"]
         generator.b1 = data["G_b1"]
@@ -549,7 +553,7 @@ def train():
         print(f"Epoch {epoch} took {epoch_duration:.4f} seconds\n")
         # Epoch End
 
-    print("✅ GAN training finished")
+    print("GAN training finished")
 
     average_epoch_time = sum(epoch_times) / len(epoch_times)
     print(f"Average epoch time: {average_epoch_time:.4f} seconds")

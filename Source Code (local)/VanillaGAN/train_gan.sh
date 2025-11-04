@@ -20,7 +20,7 @@ echo " - Memory limit: $MEM_LIMIT KB"
 
 for ((i = 1; i <= NUM_RUNS; i++))
 do
-    echo "▶️ Run #$i of $NUM_RUNS"
+    echo "Run #$i of $NUM_RUNS"
     
     (ulimit -v $MEM_LIMIT && python3 $SCRIPT \
 	  --train_size $TRAIN_SIZE \
@@ -29,7 +29,7 @@ do
 	  --learning_rate_d $LEARNING_RATE \
 	  --learning_rate_g $LEARNING_RATE)
     
-    echo "✅ Run #$i complete"
+    echo "Run #$i complete"
     
     # Small delay to prevent memory build up
     sleep 1

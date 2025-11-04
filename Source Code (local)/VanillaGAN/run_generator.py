@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mnist_gan import Generator, load_model, show_generated_images, MODEL_DATA_FILENAME
+from mnist_gan import Generator, load_model, show_generated_images, MODEL_DATA_FILENAME, MODEL_DATA_ROOT
 
 
 
@@ -8,7 +8,8 @@ from mnist_gan import Generator, load_model, show_generated_images, MODEL_DATA_F
 
 G = Generator()
 
-load_model(G, None, MODEL_DATA_FILENAME) # Only loads G
+load_model(G, None) # Only loads G
+
 
 
 # Generator a single image

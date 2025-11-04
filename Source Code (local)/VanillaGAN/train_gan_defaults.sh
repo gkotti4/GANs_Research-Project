@@ -13,11 +13,11 @@ echo " - Memory limit: $MEM_LIMIT KB"
 
 for ((i = 1; i <= NUM_RUNS; i++))
 do
-    echo "▶️ Run #$i of $NUM_RUNS"
+    echo "Run #$i of $NUM_RUNS"
     
     (ulimit -v $MEM_LIMIT && python3 $SCRIPT)
     
-    echo "✅ Run #$i complete"
+    echo "Run #$i complete"
     
     # Small delay to prevent memory build up
     sleep 1
