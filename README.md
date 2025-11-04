@@ -19,15 +19,17 @@ The experiments focus on:
 ---
 
 ## **Project Structure**
-GANs_Research_Project/  
-│  
-├── Source Code (local)/     # Local NumPy-based GAN implementation  
-├── Presentation/            # Slide deck used for academic presentation  
-├── Research Paper/          # IEEE-formatted research paper (unpublished)  
-├── Literature Survey/       # Literature review and related work summary  
-├── Diagrams/                # Training architecture and loss visualization  
-└── External Links/          # Colab DCGAN + optimized GAN implementations (COLAB)  
-  
+```text
+GANs_Research_Project/
+│
+├── Source Code (local)/     # Local NumPy-based GAN implementation
+├── Presentation/            # Slide deck used for academic presentation
+├── Research Paper/          # IEEE-formatted research paper (unpublished)
+├── Literature Survey/       # Literature review and related work summary
+├── Diagrams/                # Training architecture and loss visualization
+└── External Links/          # Colab DCGAN + optimized GAN implementations (Colab) 
+```
+
 ---
 
 ## **Implemented Architectures**
