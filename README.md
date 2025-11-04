@@ -1,4 +1,4 @@
-# **GANs_Research-Project**
+# **Generative Adversarial Networks — Research and Application**
 Research project exploring **NumPy**, **DCGAN**, and **optimized GAN** implementations for **2D procedural content generation**.
 
 > **Note:** This is a reupload of academic and independent research conducted in 2024.
